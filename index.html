@@ -1,33 +1,71 @@
 <!DOCTYPE html>
-<html lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="zh">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keyword" content="STM32,51,Arduino,单片机,学习资料,工程项目,软件工具,C语言,Keil5,PCB,Proteus,C#,教程">
     <meta name="description" content="STM32、51、Arduino等单片机学习资料、工程项目、软件工具，C语言、Keil5、PCB、Proteus、C#等教程。">
     <title>有六有分享</title>
-    <link rel="stylesheet" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
-    <script src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet"
+        href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+    <script
+        src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/css/css.css">
     <link rel="icon" type="image/png" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png">
+    <style>
+        .searchResults {
+            position: absolute;
+            top: 80px; /* 调整弹窗的垂直位置 */
+            z-index: 999; /* 确保弹窗在最上层 */
+            background-color: white;
+            border: 2px solid #ccc;
+            padding: 10px;
+            display: none;
+        }
+
+        .searchResults li {
+            list-style-type: none;
+        }
+
+    </style>
 </head>
+
 <body>
     <div class="container fw-bold fs-4 bg-info">
         <div class="">
             <a href="./index.html" class="text-reset">
-                <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png" alt="Logo" width="26" height="26" class="d-inline-block align-text-top">有六有分享
+                <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png" alt="Logo" width="26" height="26"
+                    class="d-inline-block align-text-top">有六有分享
             </a>
         </div>
     </div>
+
+    <div class="container input-group input-group-sm mb-3 p-2 bg-info">
+        <span class="input-group-text" id="inputGroup-sizing-sm">搜索一下</span>
+        <input type="text" id="searchInput" placeholder="输入要搜索的内容" class="form-control">
+    </div>
+
+    <div class="container">
+        <ul class="searchResults bg-info">
+
+        </ul>
+    </div>
+
     <section class="p-2">
         <div class="container">
             <p>
-                <a class="btn btn-info" data-bs-toggle="collapse" href="#collapseExample-mp" role="button" aria-expanded="false" aria-controls="collapseExample-mp">
+                <a class="btn btn-info" data-bs-toggle="collapse" href="#collapseExample-mp" role="button"
+                    aria-expanded="false" aria-controls="collapseExample-mp">
                     公众号
                 </a>
-                <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
                     微信号
                 </button>
-                <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample-tb" aria-expanded="false" aria-controls="collapseExample-tb">
+                <button class="btn btn-info" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample-tb" aria-expanded="false" aria-controls="collapseExample-tb">
                     淘宝店
                 </button>
             </p>
@@ -51,7 +89,7 @@
 
     <section class="">
         <div class="container">
-            <p class="fw-light" style="font-size: xx-small;">
+            <p class="fw-normal" style="font-size: xx-small;">
                 STM32、51、Arduino等单片机学习资料、工程项目、软件工具，
                 C语言、Keil5、PCB、Proteus、C#等教程。
             </p>
@@ -62,115 +100,180 @@
         <div class="container">
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button bg-info btn-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      付费参考资料
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="row row-cols-2 row-cols-md-6 g-4">
-                            <div class="col">
-                                <div class="card">
-                                    <a href="./3l1.html">   
-                                        <p class="card-title text-dark fw-normal" style="font-size: xx-small;">STM32嵌入式资料</p>
-                                    </a>
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button bg-info btn-primary fw-semibold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            付费参考资料
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="row row-cols-2 row-cols-md-6 g-4">
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./3l1.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                STM32嵌入式资料
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <a href="./4l2.html">   
-                                        <p class="card-title text-dark fw-normal" style="font-size: xx-small;">电子项目资料</p>
-                                    </a>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./4l2.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                电子项目资料
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <a href="./8Proteus1.html">
-                                        <p class="card-title text-dark fw-normal" style="font-size: xx-small;">Proteus仿真资料包</p>
-                                    </a>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./8Proteus1.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                Proteus仿真资料包
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <a href="./5labview1.html">
-                                        <p class="card-title text-dark fw-normal" style="font-size: xx-small;">Labview上位机资料包</p>
-                                    </a>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./5labview1.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                Labview上位机资料包
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <a href="./1cs1.html">
-                                        <p class="card-title text-dark fw-normal" style="font-size: xx-small;">C#上位机资料包</p>
-                                    </a>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./1cs1.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                C#上位机资料包
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <a href="./7matlab1.html">
-                                        <p class="card-title text-dark fw-normal" style="font-size: xx-small;">MATLAB与Simulink仿真</p>
-                                    </a>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./7matlab1.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                MATLAB与Simulink仿真
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                  </div>
                 </div>
                 <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed  bg-info btn-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                      软件安装服务
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="row row-cols-2 row-cols-md-6 g-4">
-                            <div class="col">
-                                <div class="card">
-                                    <a href="./2keil5software.html">  
-                                        <p class="card-title text-dark fw-normal" style="font-size: xx-small;">Keil5安装STM32/51开发</p>
-                                    </a>
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed  bg-info btn-primary fw-semibold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true"
+                            aria-controls="collapseTwo">
+                            软件安装服务
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="row row-cols-2 row-cols-md-6 g-4">
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./2keil5software.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                Keil5安装STM32/51开发
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <a href="./9Proteus-software.html">
-                                        <p class="card-title text-dark fw-normal" style="font-size: xx-small;">Proteus8.15安装</p>
-                                    </a>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./9Proteus-software.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                Proteus8.15安装
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                  </div>
                 </div>
                 <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed  bg-info btn-primary fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                      嵌入式单片机文章
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="row row-cols-2 row-cols-md-6 g-4">
-                            <div class="col">
-                                <div class="card">
-                                    <a href="./10所谓大企业病.html">
-                                        <p class="card-title text-dark fw-normal" style="font-size: xx-small;">所谓大企业病，这漫画太形象</p>
-                                    </a>
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed  bg-info btn-primary fw-semibold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true"
+                            aria-controls="collapseThree">
+                            嵌入式单片机文章
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="row row-cols-2 row-cols-md-6 g-4">
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./10所谓大企业病.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                所谓大企业病，这漫画太形象
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <a href="./6Linux性能调优工具.html">  
-                                        <p class="card-title text-dark fw-normal" style="font-size: xx-small;">Linux性能调优工具</p>
-                                    </a>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./6Linux性能调优工具.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                Linux性能调优工具
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./11嵌入式开发中的程序架构.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                嵌入式开发中的程序架构
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./12继电器应用细节.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                继电器应用细节
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./13为什么STM32学了很久还是不会做项目？.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                为什么STM32学了很久还是不会做项目？
+                                            </p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <a href="./14看懂NAND、DDR、LPDDR、eMMC几种存储器的区别.html">
+                                            <p class="card-title text-dark fw-normal" style="font-size: xx-small;">
+                                                看懂NAND、DDR、LPDDR、eMMC几种存储器的区别
+                                            </p>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </div>
         </div>
     </section>
 
@@ -185,4 +288,59 @@
             单片机技术分享
         </div>
     </div>
-</body></html>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchResultsContainer = document.querySelector('.searchResults');
+   
+        searchInput.addEventListener('input', function () {
+            const searchKeyword = this.value.toLowerCase();
+   
+            // 清空之前的搜索结果
+            searchResultsContainer.innerHTML = '';
+   
+            if (searchKeyword.trim() === '') {
+                // 如果搜索关键字为空，隐藏弹窗并返回
+                searchResultsContainer.style.display = 'none';
+                return;
+            }
+   
+            fetch('sitemap.xml')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(data, 'application/xml');
+                    const links = xmlDoc.querySelectorAll('link');
+   
+                    let hasResults = false;
+   
+                    links.forEach(link => {
+                        const url = link.querySelector('url').textContent.toLowerCase();
+                        const title = link.querySelector('title').textContent.toLowerCase();
+   
+                        if (title.includes(searchKeyword) || url.includes(searchKeyword)) {
+                            const li = document.createElement('li');
+                            li.className = 'aurl';
+                            li.innerHTML = `<a href="${url}" data-lastfrom="" title="${title}">${title}</a>`;
+                            searchResultsContainer.appendChild(li);
+                            hasResults = true;
+                        }
+                    });
+   
+                    // 根据搜索结果显示或隐藏弹窗
+                    searchResultsContainer.style.display = hasResults ? 'block' : 'none';
+                })
+                .catch(error => console.error('Error fetching XML:', error));
+        });
+   
+        // 监听输入框失去焦点事件，隐藏搜索结果弹窗
+        searchInput.addEventListener('blur', function () {
+            // 使用 setTimeout 确保点击搜索结果时能触发链接
+            setTimeout(() => {
+                searchResultsContainer.style.display = 'none';
+            }, 200);
+        });
+    </script>
+</body>
+
+</html>

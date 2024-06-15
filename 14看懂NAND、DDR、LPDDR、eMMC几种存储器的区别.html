@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keyword" content="STM32,51,Arduino,单片机,学习资料,工程项目,软件工具,C语言,Keil5,PCB,Proteus,C#,教程">
+  <meta name="description" content="STM32、51、Arduino等单片机学习资料、工程项目、软件工具，C语言、Keil5、PCB、Proteus、C#等教程。">
+  <title>有六有分享-看懂NAND、DDR、LPDDR、eMMC几种存储器的区别</title>
+  <link rel="stylesheet"
+    href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+  <script src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/css/css.css">
+  <link rel="icon" type="image/png" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png" />
+</head>
+
+<body>
+  <div class="container fw-bold fs-4 bg-info">
+    <div class="">
+      <a href="./index.html" class="text-reset">
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png" alt="Logo" width="26" height="26"
+          class="d-inline-block align-text-top">有六有分享
+      </a>
+    </div>
+  </div>
+
+  <div class="container sticky-top fw-bold bg-info">
+    <p>看懂NAND、DDR、LPDDR、eMMC几种存储器的区别</p>
+  </div>
+
+  <div class="container fixed-bottom">
+    <div class="row">
+      <div class="col-md-3 fixed-sidebar">
+        <a href="#"><img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/rocket-fill.svg"
+            style="width: 24px; height: 32;"></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="p-2">
+    <div class="container-sm">
+      <h5 class="fw-bold fs-6">文章信息</h5>
+    </div>
+  </section>
+
+  <section class="p-2">
+    <div class="container-md">
+      <div class="fw-normal" style="font-size: small;">
+        存储领域发展至今，已有很多不同种类的存储器产品。下面给大家介绍几款常见的存储器及其应用：<br><br>
+        <h6>1 NAND</h6>
+        NAND Flash存储器是Flash存储器的一种，属于非易失性存储器，其内部采用非线性宏单元模式，为固态大容量内存的实现提供了廉价有效的解决方案。<br>
+        NAND Flash存储器具有容量较大，改写速度快等优点，适用于大量数据的存储，因而在业界得到了越来越广泛的应用，如闪存盘、固态硬盘、eMMC、UFS等。<br>
+        根据其不同的工艺技术，NAND已经从最早的SLC一路发展到如今的MLC、TLC、QLC和PLC。<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/1.png" class="w-100"><br>
+        按速度价格对比排序：SLC>MLC>TLC>QLC>PLC<br>
+        按容量大小对比排序：PLC>QLC>TLC>MLC>SLC<br>
+        目前主流的应用解决方案为TLC和QLC。SLC和MLC主要针对军工，企业级等应用，有着高速写入，低出错率，长耐久度特性。<br>
+        除此，NAND Flash根据对应不同的空间结构来看，可分为2D结构和3D结构两大类：<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/2.png" class="w-100"><br>
+        下面是各大NAND Flash芯片生产厂商在3D NAND Flash产品的量产状况：<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/3.png" class="w-100"><br><br>
+        <h6>2 DDR、LPDDR</h6>
+        DDR全称Double Data Rate（双倍速率同步动态随机存储器），严格的来讲，DDR应该叫DDR SDRAM，它是一种易失性存储器。<br>
+        虽然JEDEC于2018年宣布正式发布DDR5标准，但实际上最终的规范到2020年才完成，其目标是将内存带宽在DDR4基础上翻倍，速率3200MT/s起，最高可达6400MT/s，电压则从1.2V降至1.1V，功耗减少30%。<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/4.png" class="w-50"><br>
+        LPDDR是在DDR的基础上多了LP(Low Power)前缀,全称是Low Power Double Data Rate SDRAM，简称“低功耗内存”，是DDR的一种，以低功耗和小体积著称。<br>
+        目前最新的标准LPDDR5被称为5G时代的标配，但目前市场上的主流依然是LPDDR3/4X。<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/5.png" class="w-50"><br>
+        DDR和LPDDR的区别？<br>
+        应用领域不同。DDR因其更高的数据速率、更低的能耗和更高的密度广泛应用于平板电脑、机顶盒、汽车电子、数字电视等各种智能产品中，尤其是在疫情期间，由于在家办公、网课和娱乐的增加，平板电脑、智能盒子的需求也逐步攀升，这对DDR3、DDR4的存储性能要求更高、更稳定。<br>
+        而LPDDR拥有比同代DDR内存更低的功耗和更小的体积，该类型芯片主要应用于移动式电子产品等低功耗设备上。<br>
+        LPDDR和DDR之间的关系非常密切，简单来说，LPDDR就是在DDR的基础上面演化而来的，LPDDR2是在DDR2的基础上演化而来的，LPDDR3则是在DDR3的基础上面演化而来的，以此类推。
+        但是从第四代开始，两者之间有了差别或者说走上了不同的发展，主要因为DDR内存是通过提高核心频率从而提升性能，而LPDDR则是通过提高Prefetch预读取位数而提高使用体验。<br>
+        同时在商用方面，LPDDR4首次先于DDR4登陆消费者市场。<br><br>
+        <h6>3 eMMC、UFS</h6>
+        eMMC ( Embedded Multi Media Card) 采用统一的MMC标准接口， 把高密度NAND Flash以及MMC Controller封装在一颗BGA芯片中。<br>
+        针对Flash的特性，产品内部已经包含了Flash管理技术，包括错误探测和纠正，flash平均擦写，坏块管理，掉电保护等技术。<br>
+        用户无需担心产品内部flash晶圆制程和工艺的变化。同时eMMC单颗芯片为主板内部节省更多的空间。<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/6.png" class="w-50"><br>
+        简单地说，eMMC=Nand Flash+控制器+标准封装<br>
+        eMMC具有以下优势：<br>
+        1.简化类手机产品存储器的设计。<br>
+        2.更新速度快。<br>
+        3.加速产品研发效率。<br>
+        UFS：全称Universal Flash Storage，我们可以将它视为eMMC的进阶版，同样是由多个闪存芯片、主控组成的阵列式存储模块。<br>
+        UFS弥补了eMMC仅支持半双工运行（读写必须分开执行）的缺陷，可以实现全双工运行，所以性能得到翻番。<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/7.png" class="w-75"><br><br>
+        <h6>4 eMCP、uMCP</h6>
+        eMCP是结合eMMC和LPDDR封装而成的智慧型手机记忆体标准，与传统的MCP相较之下，eMCP因为有内建的NAND Flash控制芯片，可以减少主芯片运算的负担，并且管理更大容量的快闪记忆体。<br>
+        以外形设计来看，不论是eMCP或是eMMC内嵌式记忆体设计概念，都是为了让智慧型手机的外形厚度更薄，更省空间。<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/8.png" class="w-50"><br>
+        uMCP是结合了UFS和LPDDR封装而成的智慧型手机记忆体标准，与eMCP相比,国产的uMCP在性能上更为突出，提供了更高的性能和功率节省。<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/9.png" class="w-50"><br>
+        eMMC是将NAND Flash芯片和控制芯片都封装在一起，eMCP则是eMMC和LPDDR封装在一起。<br>
+        对于手机厂商而言，在存储产业陷入缺货潮的关键时期，既要保证手机出货所需的Mobile DRAM，又要保证eMMC货源，库存把控的难度相当大，所以eMCP自然成为大部分中低端手机首选方案。<br>
+        uMCP是顺应UFS发展的趋势，满足5G手机的需求。<br>
+        高端智能型手机基于对性能的高要求，CPU处理器需要与DRAM高频通讯，所以高端旗舰手机客户更青睐采用CPU和LPDDR进行POP封装，这样线路设计简单，可以减轻工程师设计PCB的难度，减少CPU与DRAM通讯信号的干扰，提高终端产品性能，随之生产难度增大，生产成本也会增加。<br>
+        5G手机的发展将从高端机向低端机不断渗透，从而实现全面普及，同样是对大容量高性能提出更高的要求，uMCP是顺应eMMC向UFS发展的趋势。<br>
+        uMCP结合LPDDR和UFS，不仅具有高性能和大容量，同时比PoP +分立式eMMC或UFS的解决方案占用的空间减少了40%，减少存储芯片占用并实现了更灵活的系统设计，并实现智能手机设计的高密度、低功耗存储解决方案。<br>
+        综上所述简单总结一下：<br>
+        eMMC=Nand Flash+控制器（Controller）+标准封装<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/10.png" class="w-75"><br>
+        UFS=eMMC的进阶版<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/11.png" class="w-75"><br>
+        eMMC：半双工模式 UFS：全双工模式<br>
+        eMCP=eMMC+LPDDR+标准封装<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/12.png" class="w-50"><br>
+        uMCP=UFS+LPDDR+标准封装<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/14/13.png" class="w-50">
+      </div>
+    </div>
+  </section>
+
+  <div class="container d-flex mb-2 justify-content-between fw-lighter fs-6 bg-info footer">
+    <div class="p-2" style="font-size:xx-small;">
+      © 2017-2024
+      <a class="" href="./index.html">
+        有六有分享
+      </a>
+    </div>
+    <div class="p-2" style="font-size:xx-small;">
+      单片机技术分享
+    </div>
+  </div>
+</body>
+
+</html>

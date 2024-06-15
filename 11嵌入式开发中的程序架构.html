@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keyword" content="STM32,51,Arduino,单片机,学习资料,工程项目,软件工具,C语言,Keil5,PCB,Proteus,C#,教程">
+  <meta name="description" content="STM32、51、Arduino等单片机学习资料、工程项目、软件工具，C语言、Keil5、PCB、Proteus、C#等教程。">
+  <title>有六有分享-嵌入式开发中的程序架构</title>
+  <link rel="stylesheet"
+    href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+  <script src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/css/css.css">
+  <link rel="icon" type="image/png" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png" />
+</head>
+
+<body>
+  <div class="container fw-bold fs-4 bg-info">
+    <div class="">
+      <a href="./index.html" class="text-reset">
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png" alt="Logo" width="26" height="26"
+          class="d-inline-block align-text-top">有六有分享
+      </a>
+    </div>
+  </div>
+
+  <div class="container sticky-top fw-bold bg-info">
+    <p>嵌入式开发中的程序架构</p>
+  </div>
+
+  <div class="container fixed-bottom">
+    <div class="row">
+      <div class="col-md-3 fixed-sidebar">
+        <a href="#"><img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/rocket-fill.svg"
+            style="width: 24px; height: 32;"></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="p-2">
+    <div class="container-sm">
+      <h5 class="fw-bold fs-6">文章信息</h5>
+    </div>
+  </section>
+
+  <section class="p-2">
+    <div class="container-md">
+      <div class="fw-light" style="font-size: small;">
+        <h6>1 前言</h6>
+        在嵌入式软件开发，包括单片机开发中，软件架构对于开发人员是一个必须认真考虑的问题。<br>
+      
+        软件架构对于系统整体的稳定性和可靠性是非常重要的，一个合适的软件架构不仅结构清晰，并且便于开发。<br>
+      
+        我相信在嵌入式或单片机软件开发的初期大多数开发者采用的都是简单的前后台顺序执行架构(我就是这样的)。在嵌入式软件开发中，程序架构主要分为三种，本篇文章将对这三种程序架构做出详解。<br><br>
+      
+        <h6>2 软件架构存在的意义</h6>
+      
+        可以说一个好的程序架构，是一个有经验的工程师和一个初学者的分水岭。软件架构对于开发人员是友好的，你希望先执行什么任务后执行什么任务，或者这一个时间点执行什么任务下一个执行什么任务，又或者什么事件会同步到某个任务等等，在不同的软件架构下，解决上述问题的具体方法都是有所区别的。<br>
+      
+        软件架构对开发者最大的帮助是：帮助开发者掌控整个工程的框架，当你熟练使用其中某一个程序架构后，对于系统中出现的bug你一定能够快速的定位并解决。当然，我建议要根据需要选择合适的软件架构进行开发，具体原因在文章后面会进行介绍。<br><br>
+      
+        <h6>3 深入介绍三种不同的程序架构</h6>
+        三种常用的软件架构有：顺序执行的前后台系统、时间片轮询系统和多任务操作系统。为了让大家有一个更为清晰的认识，我分别用三种软件架构对一个实例进行介绍说明。这个实例如下：它有4个任务，这4个任务为按键扫描、声光报警、显示屏刷新和超声波测距。这个实例的具体功能是通过按键设置测量距离的阈值，当测距距离低于设置的阈值时，触发声光报警并且将测量距离实时显示在显示屏上(这个应用是汽车倒车雷达的具体体现)。<br>
+      
+        3.1 顺序执行的前后台系统<br>
+        在顺序执行的前后台系统中，我会把键盘扫描用查询的方式放在while(1)中，而显示屏刷新和超声波测距使用中断，在中断服务函数中获取测量距离后进行显示，在主函数的循环中进行按键的检测，声光处理也放在主循环中。这样整个程序就以变量标志的同步方式在主循环和后台中断中执行，对应的程序代码如图所示：<br>
+      
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/11/1.jpg" class="w-100"><br>
+      
+        上面代码是顺序执行前后台系统的主函数。<br>
+      
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/11/2.jpg" class="w-100"><br>
+      
+        如上代码，顺序执行前后台系统的中断服务函数。<br>
+      
+        这种架构的优点是使用简单易于理解，而缺点是每个任务所占的CPU时间过长的话，会导致程序的实时性能差，就比如按键的检测等。<br>
+      
+        3.2 时间片轮询系统和多任务操作系统<br>
+        时间片轮询法实际上通常出现在操作系统中，也就是说他属于操作系统，但在这里所说的是基于前后台系统的时间片轮询。<br>
+      
+        时间片轮询法的实质其实就是选出一个定时器，每进一次定时中断对计数值进行自加，在主循环中根据这个计数值执行任务，这个计数值也就是任务轮询的时间片。<br>
+      
+        在这个实例中，如果采用时间片轮询系统的话，首先选用主控芯片的任一定时器，定时器定时时间周期由我们决定，为了保证实时性和运行效率，这个值通常取10ms、30ms、50ms等，我会将按键扫描轮值值设置为20ms，因为按键抖动的时长一般为20ms，这样处理既达到了消抖的目的，又不会漏掉按键的检测。<br>
+      
+        而显示屏的刷新设置为30ms，如果你觉得刷新反应慢了也可以修改这一轮询值得到改善；而超声波测距的轮询值设置为100ms，即每隔100模式触发测距一次，这个测距频率已经能够满足大多数的情况了。<br>
+      
+        程序代码如下：<br>
+      
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/11/3.jpg" class="w-100"><br>
+      
+        如上代码，时间片轮询系统的主函数。<br>
+      
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/11/4.jpg" class="w-100"><br>
+      
+        如上代码，时间片轮询系统的定时器中断函数。<br>
+      
+        可以看出时间片轮询法相比顺序执行还是有很大优势的，既有顺序执行法的优点，也有操作系统的部分优点。<br>
+      
+        3.3 多任务操作系统<br>
+        操作系统的本身是一个比较复杂的东西，任务的管理和调度实现的底层是很复杂和困难的。<br>
+      
+        但是，我们一般都是把操作系统本身作为一个工具一个平台，我们的目的是使用它的功能而不是开发一个操作系统。<br>
+      
+        我使用过ucos和freertos小型的实时操作系统，也使用过Linux大型的操作系统，有了操作系统，不管是对于程序的稳定性和开发的效率都会好很多。<br>
+      
+        我们在使用操作系统的时候更多的需要去学习和理解它的一些调度和通信的方式。<br>
+      
+        实际上真正能使用操作系统的人并不多，反而是跑裸机的占大多数，这也和产品的具体要求有关，很多简单的系统只需要裸机即可满足。<br>
+      
+        在这里本我不过多的介绍操作系统本身，因为操作系统确实挺复杂的，下面图例中的代码是在freertos中创建按键控制LED亮灭的程序结构，大家可以对比一下：<br>
+      
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/11/5.jpg" class="w-100"><br>
+      
+        如上，freertos多任务系统中主函数。<br>
+      
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/11/6.jpg" class="w-100"><br>
+      
+        如上，freertos多任务操作系统中的任务回调函数。实际上还有一些STM32框架可以实现操作系统的功能，参考此文：一种STM32框架，实现RTOS的部分功能。<br><br>
+      
+        <h6>4 如何选择合适的软件架构</h6>
+        我使用过多种不同MCU做项目开发，例如：STM32、STC15、新唐等，也接触过复杂的设计需求，例如：车载智能系统和智能家居，跑过操作系统ucos、freertos和Linux等等，在回到裸机开发时，就会不然而然的去思考完整系统的软件架构的设计问题，相信在读者中开发裸机的也占大多数。<br>
+      
+        我认为没有最好的软件架构(程序架构)，而是只有最合适的。因为在不同的应用场景中适合采用不同的程序设计，而单纯的去比较哪种程序架构是最好的没有什么实际的意义。<br>
+      
+        那接下来我们来对具体的应用场景进行分析：<br>
+      
+        在一些逻辑清晰功能单一的系统中就很适合选择顺序执行的前后台架构，这个软件架构往往能够满足我们大部分的需求，比如电饭煲、电磁炉和声控灯泡等；<br>
+      
+        在一些资源缺乏的单片机并且对系统可靠性要求较高的情况下非常适合，因为这种方法的系统耗费比较小，只是牺牲了一个定时器而已，但是选择此种程序架构需要我们对时间片进行深思熟虑的划分；<br>
+      
+        最后，在一些功能复杂，逻辑控制较为困难的系统中就适合选择多任务操作系统，比如视频监控系统、无人机等等应用场景。<br>
+      
+        作为嵌入式软件工程师，掌握这三种软件架构是非常有必要的，它们可以让我们在设计程序时拥有更多的选择和思考，而每一种不同的程序架构都具备它自己的优势与不足，这需要我们去用心实践方可体会到它的奥妙。<br>
+      </div>
+    </div>
+  </section>
+
+  <div class="container d-flex mb-2 justify-content-between fw-lighter fs-6 bg-info footer">
+    <div class="p-2" style="font-size:xx-small;">
+      © 2017-2024
+      <a class="" href="./index.html">
+        有六有分享
+      </a>
+    </div>
+    <div class="p-2" style="font-size:xx-small;">
+      单片机技术分享
+    </div>
+  </div>
+</body>
+
+</html>

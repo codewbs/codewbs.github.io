@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keyword" content="STM32,51,Arduino,单片机,学习资料,工程项目,软件工具,C语言,Keil5,PCB,Proteus,C#,教程">
+  <meta name="description" content="STM32、51、Arduino等单片机学习资料、工程项目、软件工具，C语言、Keil5、PCB、Proteus、C#等教程。">
+  <title>有六有分享-为什么STM32学了很久还是不会做项目？</title>
+  <link rel="stylesheet"
+    href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+  <script src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/css/css.css">
+  <link rel="icon" type="image/png" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png" />
+</head>
+
+<body>
+  <div class="container fw-bold fs-4 bg-info">
+    <div class="">
+      <a href="./index.html" class="text-reset">
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png" alt="Logo" width="26" height="26"
+          class="d-inline-block align-text-top">有六有分享
+      </a>
+    </div>
+  </div>
+
+  <div class="container sticky-top fw-bold bg-info">
+    <p>为什么STM32学了很久还是不会做项目？</p>
+  </div>
+
+  <div class="container fixed-bottom">
+    <div class="row">
+      <div class="col-md-3 fixed-sidebar">
+        <a href="#"><img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/rocket-fill.svg"
+            style="width: 24px; height: 32;"></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="p-2">
+    <div class="container-sm">
+      <h5 class="fw-bold fs-6">文章信息</h5>
+    </div>
+  </section>
+
+  <section class="p-2">
+    <div class="container-md">
+      <div class="fw-normal" style="font-size: small;">
+        可能你已经学习了很久，但是当Leader抛给你一个STM32项目，你是不是依然手足无措？<br>
+        有一朋友刚开始学习的51单片机，后来转STM32了。主要是跟着网上的在线课程学习，自己下边跟着敲代码。过程中学过各种培训机构出的视频课程，接触过操作系统，开发板上的例程都可以做出来。后来他又学习了PCB绘制，由于在学校的时候没学到多少东西，而且不是电子类专业，陷入了迷茫，不知道该怎么学了。<br>
+        记得在上大学的时候，专业课老师曾反复叮嘱我们“师傅领进门，修行看个人”。这话之后还没完，经常告诫我们要深入学习51单片机。当时没有完全理解他的意思，直到工作若干年之后才知道。<br>
+        在嵌入式领域，技术上有所精进，底层的东西少不了。通过51单片机的学习，可以理解单片机、SOC、微机原理相关的硬件知识。<br>
+        当工作那会，在一家军工企业打工，当时的岗位是嵌入式开发工程师。那时候，我还是一枚小白，甚至C语言都没学好。一个来自华为的老工程师带着我学习、工作。他在华为的时候主要是做的C语言相关的开发，51单片机了解一些。<br>
+        跟他一起做的第一个小项目是用STM32实现的。他翻看了一下STM32的相关demo，几天之后那个小项目初见端倪。<br>
+        这个项目虽小，却涉及到了上位机开发的C#、单片机开发用的C语言、图形界面用到的PS以及CAN通信协议等。<br>
+        项目完成后，在跟他聊天过程中，我得知他之前对于CAN通信、STM32并不熟悉。<br>
+        What？或许这就是触类旁通的结果。<br>
+        实际上，C语言是非常接近底层的开发语言，也是嵌入式开发的主要开发语言。学好C语言，不了解底层的微机原理是不可能的。寄存器、位操作、堆栈、内存申请与释放，这些知识点也都会接触到。<br>
+        回到本文的题目，做不了项目是因为一直以来学的都是皮毛，没有学到实质的东西。虽然学了很久，官方手册看过吗？恐怕一直都是在用标准库、HAL库之类的。<br>
+        在这里并不是贬低库开发，其实，库开发是一种高效的开发方式。高手也会用库开发STM32项目，但是他们可能会尽力吃透所用的标准库、HAL库。开发库就好比wheel，是很多工程师智慧的产物。如下图是封装好的外设驱动，有必要学习一下是怎么实现的。关于STM32编程资料，点击查看：<a href="./3l1.html">STM32嵌入式资料包</a>。<br>
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/13/1.png" class="w-100"><br>
+    
+        做底层本身确实要复杂一些，底层软件工程师的成长周期确实要长一点。<br>
+        有人可能会反驳，现在各个厂家的配置工具都很完善，为什么我不把精力放在应用和算法上，而要放着现成的驱动不用，自己手写呢？那你就去安心做个应用软件工程师，别来搀和底层。<br>
+        做单片机开发，就得清楚今后的发展方向是什么。当个几年软件工程师，然后转岗去做管理吗？<br>
+        倘若技术追求高一点的话，你努力的方向一定是系统架构师。<br>
+        而要成为合格的系统架构师，还得了解单片机底层是如何工作的，甚至还得具备相当程度的硬件知识，应用层的算法只能是锦上添花。<br>
+        而这些底层，之所以被称之为“底层”，是因为它们确实就是整个系统框架里最基础的部分。好比盖大楼，这些就是地基。认真看官方手册、寄存器手册，每一个驱动都自己手写，一点一点做。同时，学习电子元器件、电路原理等硬件知识。<br>
+        其实，能坚持下来，就已经打败90%的人了，找工作自然也不是问题。
+      </div>
+    </div>
+  </section>
+
+  <div class="container d-flex mb-2 justify-content-between fw-lighter fs-6 bg-info footer">
+    <div class="p-2" style="font-size:xx-small;">
+      © 2017-2024
+      <a class="" href="./index.html">
+        有六有分享
+      </a>
+    </div>
+    <div class="p-2" style="font-size:xx-small;">
+      单片机技术分享
+    </div>
+  </div>
+</body>
+
+</html>

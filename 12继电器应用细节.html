@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keyword" content="STM32,51,Arduino,单片机,学习资料,工程项目,软件工具,C语言,Keil5,PCB,Proteus,C#,教程">
+  <meta name="description" content="STM32、51、Arduino等单片机学习资料、工程项目、软件工具，C语言、Keil5、PCB、Proteus、C#等教程。">
+  <title>有六有分享-继电器应用细节</title>
+  <link rel="stylesheet"
+    href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+  <script src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/bootstrap-5.3.0-alpha1-dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/css/css.css">
+  <link rel="icon" type="image/png" href="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png" />
+</head>
+
+<body>
+  <div class="container fw-bold fs-4 bg-info">
+    <div class="">
+      <a href="./index.html" class="text-reset">
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/logo.png" alt="Logo" width="26" height="26"
+          class="d-inline-block align-text-top">有六有分享
+      </a>
+    </div>
+  </div>
+
+  <div class="container sticky-top fw-bold bg-info">
+    <p>继电器应用细节</p>
+  </div>
+
+  <div class="container fixed-bottom">
+    <div class="row">
+      <div class="col-md-3 fixed-sidebar">
+        <a href="#"><img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/img/rocket-fill.svg"
+            style="width: 24px; height: 32;"></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="p-2">
+    <div class="container-sm">
+      <h5 class="fw-bold fs-6">文章信息</h5>
+    </div>
+  </section>
+
+  <section class="p-2">
+    <div class="container-md">
+      <div class="fw-normal" style="font-size: small;">
+        继电器的应用，相信大家都知道，在电路中只要给它供电、断电也就可以工作了。本文讨论它的应用细节。<br><br>
+
+        <h6>1 现在流行的接法</h6>
+        
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/12/1.png" class="w-75"><br>
+        
+            图中，继电器的线圈经过Q1作为开关，使其导通与断开。D1作为续流，消耗线圈中的能量。<br><br>
+        
+        <h6>2 继电器的特点</h6>
+        
+        吸合电流大于释放电流<br>
+        
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/12/2.png" class="w-75"><br>
+        
+        保持电流小于吸合电流、大于释放电流<br>
+        
+            以上两点均为继电器的“通病”，大家可以做一下实验，或看一看说明书。<br><br>
+        
+        <h6>3 流行电路的优点及缺点</h6>
+        
+            大家知道，继电器的线圈相当于电感，它的电流不能突变。在释放时，Q1截止瞬间，线圈将仍保持原来的电流大小，如果不接入D1这个二极管，产生的电压-----理论上是无穷大的(在外电路负载为无穷大时)，流行电路中的D1的接入，给线圈中的能量提供了释放的通道。<br>
+        
+            然而，假如(理论上)二极管为理想的，即它只单向导通而没有任何功率消耗，那么，在继电器释放时，线圈中的电流将一直保持吸合时的最大电流(同时假如线圈为理想的)，这种情况将使继电器无法释放。<br>
+        
+            实际中的二极管及线圈都不是理想的，所以，它是可以释放的。继电器的吸合到释放是由线圈中的电流决定的，如果二极管及线圈的等效电阻(直流)很小，那么它的释放时间将很长，反之，则较短。<br>
+        
+            由此看，流行电路的优点是提供了Q1截止时的能量释放通道;其缺点是，释放时间还有进一步缩短的可能。<br><br>
+        
+        <h6>4 其它接法</h6>
+        
+            曾见过象下图中电路，也曾见过象下图中没有二极管的接法，这些接法都考虑到了抑制开关Q1截止时的反向电压，但没有考虑到释放时间问题。<br>
+        
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/12/3.png" class="w-50"><br><br>
+        
+        <h6>5 建议接法</h6>
+        
+        加入电阻R1，使能量释放快一些。<br>
+        
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/12/4.png" class="w-25"><br>
+        
+            上图中，线圈在Q1关断时，能量主要消耗在R1上，使继电器可以快速降到释放电流。<br>
+        
+            R1的选择，由Q1的最高反压、线圈工作电流两者决定，电阻越大，释放时间越短。<br>
+        
+        减小继电器保持时的功耗。<br>
+        
+            大家知道，继电器吸合时需要较大的电流，而保持吸合状态则不需要和吸合时的电流一样。<br>
+        
+            下图接入R1及C1将明显减小继电器的保持功耗。在继电器吸合前，C1已充电至供电电压，吸合的瞬间将由C1为继电器供电，以保障吸合所需的大电流。当吸合后，供给线圈的电流来自R1，它将电流限制到较小状态。<br>
+        
+        <img src="https://codewbssh.oss-cn-shanghai.aliyuncs.com/posts/12/5.png" class="w-25">
+      </div>
+    </div>
+  </section>
+
+  <div class="container d-flex mb-2 justify-content-between fw-lighter fs-6 bg-info footer">
+    <div class="p-2" style="font-size:xx-small;">
+      © 2017-2024
+      <a class="" href="./index.html">
+        有六有分享
+      </a>
+    </div>
+    <div class="p-2" style="font-size:xx-small;">
+      单片机技术分享
+    </div>
+  </div>
+</body>
+
+</html>
